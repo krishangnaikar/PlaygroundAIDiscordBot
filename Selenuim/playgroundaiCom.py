@@ -14,8 +14,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from undetected_chromedriver import ChromeOptions, Chrome
 
-# Replace with your actual session token
-session_token = "ffdadce6-6431-4dea-ac76-8796d8451bf2"
 
 
 def create_image(prompt, username="defualt_username", password_real="defualt_password", path="defualt/path/to/image.jpg"): # has to be a jpg
