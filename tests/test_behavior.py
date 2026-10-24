@@ -35,3 +35,10 @@ def test_failed_generation_sends_error_without_deleting_file():
     ctx.send.assert_awaited_once_with(error)
     remove.assert_not_called()
     discord.File.assert_not_called()
+
+def test_main_starts_the_defined_bot_runner():
+    command_bot = SimpleNamespace(run_bot=MagicMock())
+    commands_package = SimpleNamespace(commandBot=command_bot)
+    with patch.dict('sys.modules', {'Commands': commands_package, 'Commands.commandBot': command_bot}):
+        runpy.run_path(str(Path(__file__).resolve().parents[1] / 'main.py'), run_name='__main__')
+    command_bot.run_bot.assert_called_once_with()
